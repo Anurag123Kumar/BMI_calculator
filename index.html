@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="bmi.jpg" alt="bmi image">
+        </div>
+        <div class="form-container">
+            <h1>BMI</h1>
+            <h2>Calculator</h2>
+            
+            <!-- Unit Toggle Switch -->
+            <div class="unit-switch">
+                <span class="unit-label active" id="metric">Metric</span>
+                <label class="switch">
+                    <input type="checkbox" id="unit-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="unit-label" id="imperial">Imperial</span>
+            </div>
+            
+            <div class="form">
+                <form action="">
+                    <!-- Metric inputs (default) -->
+                    <div class="metric-inputs">
+                        <input type="text" class="height" placeholder="Enter height in CM">
+                        <input type="text" class="weight" placeholder="Enter weight in KG">
+                    </div>
+                    
+                    <!-- Imperial inputs (hidden by default) -->
+                    <div class="imperial-inputs" style="display: none;">
+                        <div class="height-imperial">
+                            <input type="text" class="feet" placeholder="Feet">
+                            <input type="text" class="inches" placeholder="Inches">
+                        </div>
+                        <input type="text" class="pounds" placeholder="Enter weight in LBS">
+                    </div>
+                    
+                    <input type="submit" value="Calculate">
+                </form>
+            </div>
+            
+            <!-- Advanced Options Toggle -->
+            <div class="advanced-toggle">
+                <span id="show-advanced">Show Advanced Options <i class="fas fa-chevron-down"></i></span>
+            </div>
+            
+            <!-- Advanced Options -->
+            <div class="advanced-options" style="display: none;">
+                <div class="advanced-input">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" placeholder="Years">
+                </div>
+                <div class="advanced-input">
+                    <label for="gender">Gender:</label>
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="advanced-input">
+                    <label for="waist">Waist:</label>
+                    <input type="number" id="waist" placeholder="CM">
+                </div>
+                <div class="advanced-input">
+                    <label for="neck">Neck:</label>
+                    <input type="number" id="neck" placeholder="CM">
+                </div>
+                <div class="advanced-input female-only" style="display: none;">
+                    <label for="hip">Hip:</label>
+                    <input type="number" id="hip" placeholder="CM">
+                </div>
+            </div>
+        </div>
+
+        <div class="popup">
+            <div class="results-container">
+                <div class="bmi-result">
+                    <h3>Your BMI</h3>
+                    <div class="bmi-score"></div>
+                    <div class="bmi-category"></div>
+                    <div class="bmi-text"></div>
+                </div>
+                
+                <div class="additional-metrics">
+                    <h3>Additional Metrics</h3>
+                    <div class="metric-item">
+                        <span class="metric-label">Ideal Weight Range:</span>
+                        <span class="ideal-weight"></span>
+                    </div>
+                    <div class="metric-item body-fat-container" style="display: none;">
+                        <span class="metric-label">Body Fat %:</span>
+                        <span class="body-fat"></span>
+                    </div>
+                    <div class="metric-item bmr-container" style="display: none;">
+                        <span class="metric-label">BMR:</span>
+                        <span class="bmr"></span>
+                    </div>
+                    <div class="metric-item whr-container" style="display: none;">
+                        <span class="metric-label">Waist-Height Ratio:</span>
+                        <span class="whr"></span>
+                    </div>
+                </div>
+                
+                <div class="recommendations">
+                    <h3>Health Recommendations</h3>
+                    <div class="recommendation-text"></div>
+                </div>
+                
+                <div class="close-btn">Close</div>
+                <div class="save-btn">Save Result</div>
+            </div>
+        </div>
+
+        <!-- BMI History Section -->
+        <div class="history-container">
+            <div class="history-header">
+                <h3>BMI History</h3>
+                <div class="history-buttons">
+                    <button id="export-history">Export Data</button>
+                    <button id="clear-history">Clear History</button>
+                </div>
+            </div>
+            <div class="history-items">
+                <!-- History entries will be added here by JavaScript -->
+                <p class="no-history">No history available</p>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
